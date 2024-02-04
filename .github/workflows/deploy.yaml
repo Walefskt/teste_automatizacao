@@ -42,7 +42,7 @@ jobs:
 
       - name: Renderiza o Relatório
         run: |
-          quarto render aplicacao/relatorio.qmd
+          quarto render aplicacao/relatorio_walef.qmd
       
       - name: Publica a Dashboard
         run: |
@@ -52,7 +52,7 @@ jobs:
              secret='${{ secrets.RSCONNECT_SECRET }}'
             )
           rsconnect::deployDoc(
-            doc = "aplicacao/dashboard.Rmd", 
+            doc = "aplicacao/macrocopa2.Rmd", 
             forceUpdate = TRUE
             )
         shell: Rscript {0}
