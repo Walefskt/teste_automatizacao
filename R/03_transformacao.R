@@ -1,8 +1,5 @@
 # Conexão com  banco SQL de dados brutos
-sql_brutos <- DBI::dbConnect(
-    drv = duckdb::duckdb(),
-    dbdir = 'dados2/dados_brutos.db'
-)
+sql_brutos <- conectar_sql(local = 'dados2/dados_brutos.db')
 
 # Transforma conexão com objeto tibble com fonte externa
 tbl_brutos <- dplyr::tbl(src = sql_brutos, from = 'tbl_brutos')
@@ -37,10 +34,7 @@ dados_tratados <- tbl_brutos |>
   dplyr::as_tibble()
 
 # Criar banco de dados SQL
-sql_tratados <- DBI::dbConnect(
-    drv = duckdb::duckdb(),
-    dbdir = 'dados2/dados_tratados.db'
-    )
+sql_tratados <- conectar_sql(local = 'dados2/dados_tratados.db')
 
 # Armazenar dados em tabela no banco SQL
 DBI::dbWriteTable(

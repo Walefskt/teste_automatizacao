@@ -14,10 +14,7 @@ dados_brutos <- rdbnomics::rdb(
   )
 
 # Criar banco de dados SQL
-sql_brutos <- DBI::dbConnect(
-    drv = duckdb::duckdb(),
-    dbdir = 'dados2/dados_brutos.db'
-    )
+sql_brutos <- conectar_sql(local = 'dados2/dados_brutos.db')
 
 # Armazenar dados em tabela no banco SQL
 DBI::dbWriteTable(
